@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WeiBo</string>App
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="auth">授权</string>
+
+    <!-- 分享微博入口界面 -->
+    <string name="weibosdk_demo_token_to_string_format_1">Token：%1$s \n有效期：%2$s</string>
+</resources>
