@@ -25,4 +25,5 @@ dependencies {
     compile project(':uil')
     compile project(':weiboSDK')
     compile files('libs/weibosdkcore.jar')
+    compile 'com.google.code.gson:gson:2.2.4'
 }

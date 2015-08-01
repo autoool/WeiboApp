@@ -10,6 +10,7 @@ import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.net.RequestListener;
 import com.sina.weibo.sdk.openapi.legacy.WeiboAPI;
 import com.techidea.weiboapp.constants.AccessTokenKeeper;
+import com.techidea.weiboapp.constants.URLs;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -46,22 +47,22 @@ public class BoreWeiboApi extends WeiboAPI {
 
             @Override
             public void onComplete4binary(final ByteArrayOutputStream responseOS) {
-                    mainLooperHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            listener.onComplete4binary(responseOS);
-                        }
-                    });
+                mainLooperHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        listener.onComplete4binary(responseOS);
+                    }
+                });
             }
 
             @Override
             public void onIOException(final IOException e) {
-                    mainLooperHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            listener.onIOException(e);
-                        }
-                    });
+                mainLooperHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        listener.onIOException(e);
+                    }
+                });
             }
 
             @Override
@@ -76,4 +77,14 @@ public class BoreWeiboApi extends WeiboAPI {
         });
     }
 
+    @Override
+    protected void request(String url, WeiboParameters params, String httpMethod, RequestListener listener) {
+        super.request(url, params, httpMethod, listener);
+    }
+
+    public void statusesHome_timeline(long page,RequestListener listener){
+        WeiboParameters parameters = new WeiboParameters();
+        parameters.add("page",page);
+        requestInMainLooper(URLs.statusesHome_timeline,parameters,HTTPMETHOD_GET,listener);
+    }
 }
