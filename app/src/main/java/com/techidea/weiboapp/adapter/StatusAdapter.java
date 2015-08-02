@@ -1,7 +1,7 @@
 package com.techidea.weiboapp.adapter;
 
-import android.app.Fragment;
 import android.content.Context;
+import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -17,6 +17,8 @@ import com.techidea.weiboapp.R;
 import com.techidea.weiboapp.entity.PicUrls;
 import com.techidea.weiboapp.entity.Status;
 import com.techidea.weiboapp.entity.User;
+import com.techidea.weiboapp.util.DateUtils;
+import com.techidea.weiboapp.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,28 +54,43 @@ public class StatusAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         final ViewHolder holder;
         if(convertView == null){
             holder = new ViewHolder();
 
             convertView = View.inflate(context, R.layout.item_status,null);
-            holder.ll_card_content = (LinearLayout)convertView.findViewById(R.id.ll_card_content);
-            holder.iv_avatar= (ImageView)convertView.findViewById(R.id.iv_avatar);
-            holder.rl_content = (RelativeLayout)convertView.findViewById(R.id.rl_content);
-            holder.tv_subhead = (TextView)convertView.findViewById(R.id.tv_subhead);
-            holder.tv_caption = (TextView)convertView.findViewById(R.id.tv_caption);
 
-            holder.tv_content = (TextView)convertView.findViewById(R.id.tv_content);
-            holder.include_status_image = (FrameLayout)convertView.findViewById(R.id.include_status_image);
-            holder.gv_images = (GridView)holder.include_status_image.findViewById(R.id.gv_images);
-            holder.iv_image =(ImageView)holder.include_status_image.findViewById(R.id.iv_image);
+            holder.ll_card_content = (LinearLayout)convertView
+                    .findViewById(R.id.ll_card_content);
 
-            holder.include_retweeted_status = (LinearLayout)convertView.findViewById(R.id.include_retweeted_status);
-            holder.tv_retweeted_content = (TextView)holder.include_retweeted_status.findViewById(R.id.tv_retweeted_content);
+            holder.iv_avatar= (ImageView)convertView
+                    .findViewById(R.id.iv_avatar);
+            holder.rl_content = (RelativeLayout)convertView
+                    .findViewById(R.id.rl_content);
+            holder.tv_subhead = (TextView)convertView
+                    .findViewById(R.id.tv_subhead);
+            holder.tv_caption = (TextView)convertView
+                    .findViewById(R.id.tv_caption);
+
+            holder.tv_content = (TextView)convertView
+                    .findViewById(R.id.tv_content);
+            holder.include_status_image = (FrameLayout)convertView
+                    .findViewById(R.id.include_status_image);
+            holder.gv_images = (GridView)holder.include_status_image
+                    .findViewById(R.id.gv_images);
+            holder.iv_image =(ImageView)holder.include_status_image
+                    .findViewById(R.id.iv_image);
+
+            holder.include_retweeted_status = (LinearLayout)convertView
+                    .findViewById(R.id.include_retweeted_status);
+            holder.tv_retweeted_content = (TextView)holder.include_retweeted_status
+                    .findViewById(R.id.tv_retweeted_content);
             holder.include_retweeted_status_image = (FrameLayout)holder
-                    .include_retweeted_status_image.findViewById(R.id.gv_images);
+                    .include_retweeted_status.findViewById(R.id.include_status_image);
+            holder.gv_retweeted_images = (GridView)holder.include_retweeted_status_image
+                    .findViewById(R.id.gv_images);
             holder.iv_retweeted_image = (ImageView)holder.include_retweeted_status_image
                     .findViewById(R.id.iv_image);
 
@@ -90,6 +107,7 @@ public class StatusAdapter extends BaseAdapter {
             holder.ll_like_bottom = (LinearLayout)convertView.findViewById(R.id.ll_like_bottom);
             holder.iv_like_bottom = (ImageView)convertView.findViewById(R.id.iv_like_bottom);
             holder.tv_like_bottom = (TextView)convertView.findViewById(R.id.tv_like_bottom);
+            convertView.setTag(holder);
         }else{
             holder = (ViewHolder)convertView.getTag();
         }
@@ -97,10 +115,14 @@ public class StatusAdapter extends BaseAdapter {
         //bind data
         final Status status = getItem(position);
         User user = status.getUser();
-        imageLoader.displayImage(user.getProfile_image_url(),holder.iv_avatar);
+        //报空指针异常
+        imageLoader.displayImage(user.getProfile_image_url(), holder.iv_avatar);
         holder.tv_subhead.setText(user.getName());
-        holder.tv_caption.setText(status.getCreated_at() + " 来自 " + status.getSource());
-        holder.tv_content.setText(status.getText());
+        holder.tv_caption.setText(DateUtils.getShortTime(status.getCreated_at())
+                + " 来自 " + Html.fromHtml(status.getSource()));
+//        holder.tv_content.setText(status.getText());
+        holder.tv_content.setText(StringUtils
+                .getWeiboContent(context, holder.tv_content, status.getText()));
 
         setImages(status, holder.include_status_image, holder.gv_images, holder.iv_image);
 
@@ -109,8 +131,10 @@ public class StatusAdapter extends BaseAdapter {
             User retUser = retweeted_status.getUser();
 
             holder.include_retweeted_status.setVisibility(View.VISIBLE);
-            holder.tv_retweeted_content.setText("@" + retUser.getName() + ":" +
-            retweeted_status.getText());
+            String retweetedContent = "@" + retUser.getName() + ":" +
+                    retweeted_status.getText();
+            holder.tv_retweeted_content.setText(StringUtils
+                    .getWeiboContent(context, holder.tv_retweeted_content, retweetedContent));
 
             setImages(retweeted_status,
                     holder.include_retweeted_status_image,

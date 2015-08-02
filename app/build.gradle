@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "23.0.0 rc3"
+    compileSdkVersion 21
+    buildToolsVersion '22.0.1'
 
     defaultConfig {
         applicationId "com.techidea.weiboapp"
@@ -24,6 +24,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile project(':uil')
     compile project(':weiboSDK')
+    compile project(':pulltorefresh')
     compile files('libs/weibosdkcore.jar')
     compile 'com.google.code.gson:gson:2.2.4'
 }

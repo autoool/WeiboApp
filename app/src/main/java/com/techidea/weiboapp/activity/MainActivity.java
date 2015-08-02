@@ -61,7 +61,6 @@ public class MainActivity extends FragmentActivity implements
                 controller.showFragment(3);
                 break;
             default:
-
                 break;
         }
     }
