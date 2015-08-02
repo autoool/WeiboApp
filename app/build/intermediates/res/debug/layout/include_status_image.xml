@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    >
+
+    <com.techidea.weiboapp.widget.WrapHeightGridView
+        android:layout_width="272dp"
+        android:id="@+id/gv_images"
+        style="@style/GridViewImages"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/iv_image"
+        android:scaleType="centerCrop"
+        android:visibility="gone"/>
+
+</FrameLayout><!-- From: file:/F:/AndroidStudioProjects/WeiBoApp/app/src/main/res/layout/include_status_image.xml -->
