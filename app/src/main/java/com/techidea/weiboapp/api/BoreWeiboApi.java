@@ -82,9 +82,37 @@ public class BoreWeiboApi extends WeiboAPI {
         super.request(url, params, httpMethod, listener);
     }
 
+    /**
+     * 获取当前登录用户及其所关注用户的最新微博
+     *
+     * @param page
+     *            返回结果的页码。(单页返回的记录条数，默认为20。)
+     * @param listener
+     */
     public void statusesHome_timeline(long page,RequestListener listener){
         WeiboParameters parameters = new WeiboParameters();
         parameters.add("page",page);
-        requestInMainLooper(URLs.statusesHome_timeline,parameters,HTTPMETHOD_GET,listener);
+        requestInMainLooper(URLs.statusesHome_timeline, parameters, HTTPMETHOD_GET, listener);
     }
+
+    /**
+     * 根据微博id 返回某条微博的评论数
+     * @param id 需要查询的微博id
+     * @param page 返回结果的页码 (单页返回的记录条数默认50)
+     * @param listener
+     */
+    public void commentShow(long id,long page,RequestListener listener){
+        WeiboParameters params = new WeiboParameters();
+        params.add("id",id);
+        params.add("page",page);
+        requestInMainLooper(URLs.commentsShow,params,WeiboAPI.HTTPMETHOD_GET,listener);
+    }
+
+    public void commentsCreate(long id,String comment,RequestListener listener){
+        WeiboParameters params = new WeiboParameters();
+        params.add("id",id);
+        params.add("comment",comment);
+        requestInMainLooper(URLs.commentsCreate,params,WeiboAPI.HTTPMETHOD_POST,listener);
+    }
+
 }

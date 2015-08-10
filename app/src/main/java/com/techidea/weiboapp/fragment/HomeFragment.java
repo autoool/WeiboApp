@@ -69,7 +69,11 @@ public class HomeFragment  extends BaseFragment {
                 loadData(curPage);
             }
         });
+
+//        plv_home.set
         footView = View.inflate(activity,R.layout.footview_loading,null);
+
+
     }
 
     private void loadData(final int page){
@@ -89,7 +93,7 @@ public class HomeFragment  extends BaseFragment {
                         if(page==1){
                             statuses.clear();
                         }
-                        curPage = 1;
+                        curPage = page;
                         addData(new Gson().fromJson(response,StatusTimeLineResponse.class));
 
 //                        StatusTimeLineResponse timelineResponse = new Gson().fromJson(response,StatusTimeLineResponse.class);

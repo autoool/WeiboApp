@@ -52,7 +52,7 @@ public class TitleBuilder {
     }
 
     //left
-    public TitleBuilder setLeftInage(int resid){
+    public TitleBuilder setLeftImage(int resid){
         ivLeft.setVisibility(resid > 0 ? View.VISIBLE : View.GONE);
         ivLeft.setImageResource(resid);
         return this;

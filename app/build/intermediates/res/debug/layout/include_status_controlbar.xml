@@ -56,11 +56,11 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:id="@+id/iv_common_bottom"
+                android:id="@+id/iv_comment_bottom"
                 android:src="@drawable/timeline_icon_comment"/>
 
             <TextView
-                android:id="@+id/tv_common_bottom"
+                android:id="@+id/tv_comment_bottom"
                 style="@style/TextViewBody"
                 android:layout_marginLeft="8dp"
                 android:text="评论"

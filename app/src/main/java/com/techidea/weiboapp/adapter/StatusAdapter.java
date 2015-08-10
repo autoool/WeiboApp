@@ -1,6 +1,7 @@
 package com.techidea.weiboapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +12,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.techidea.weiboapp.R;
+import com.techidea.weiboapp.activity.StatusDetailActivity;
+import com.techidea.weiboapp.activity.WriteCommentActivity;
 import com.techidea.weiboapp.entity.PicUrls;
 import com.techidea.weiboapp.entity.Status;
 import com.techidea.weiboapp.entity.User;
 import com.techidea.weiboapp.util.DateUtils;
 import com.techidea.weiboapp.util.StringUtils;
+import com.techidea.weiboapp.util.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,15 +99,14 @@ public class StatusAdapter extends BaseAdapter {
             holder.iv_retweeted_image = (ImageView)holder.include_retweeted_status_image
                     .findViewById(R.id.iv_image);
 
-
             holder.ll_share_bottom = (LinearLayout)convertView.findViewById(
                     R.id.ll_share_bottom);
             holder.iv_share_bottom = (ImageView)convertView.findViewById(R.id.iv_share_bottom);
             holder.tv_share_bottom = (TextView)convertView.findViewById(R.id.tv_share_bottom);
 
             holder.ll_comment_bottom = (LinearLayout)convertView.findViewById(R.id.ll_comment_bottom);
-            holder.iv_comment_bottom = (ImageView)convertView.findViewById(R.id.iv_common_bottom);
-            holder.tv_comment_bottom = (TextView)convertView.findViewById(R.id.tv_common_bottom);
+            holder.iv_comment_bottom = (ImageView)convertView.findViewById(R.id.iv_comment_bottom);
+            holder.tv_comment_bottom = (TextView)convertView.findViewById(R.id.tv_comment_bottom);
 
             holder.ll_like_bottom = (LinearLayout)convertView.findViewById(R.id.ll_like_bottom);
             holder.iv_like_bottom = (ImageView)convertView.findViewById(R.id.iv_like_bottom);
@@ -126,7 +130,7 @@ public class StatusAdapter extends BaseAdapter {
 
         setImages(status, holder.include_status_image, holder.gv_images, holder.iv_image);
 
-        Status retweeted_status = status.getRetweeted_status();
+        final Status retweeted_status = status.getRetweeted_status();
         if(retweeted_status != null){
             User retUser = retweeted_status.getUser();
 
@@ -146,10 +150,59 @@ public class StatusAdapter extends BaseAdapter {
         holder.tv_share_bottom.setText(status.getReposts_count() == 0 ?
         "转发" : status.getComments_count() + "");
         holder.tv_comment_bottom.setText(status.getComments_count() == 0 ?
-        "评论" : status.getComments_count() + "");
-        holder.tv_like_bottom.setText(status.getAttitudes_count()==0?
-        "赞": status.getAttitudes_count() + "");
+                "评论" : status.getComments_count() + "");
+        holder.tv_like_bottom.setText(status.getAttitudes_count() == 0 ?
+                "赞" : status.getAttitudes_count() + "");
 
+
+        holder.ll_card_content.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, StatusDetailActivity.class);
+                intent.putExtra("status", status);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.include_retweeted_status.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, StatusDetailActivity.class);
+                intent.putExtra("status", retweeted_status);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.ll_share_bottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastUtils.showToast(context, "转个发~", Toast.LENGTH_SHORT);
+            }
+        });
+
+        holder.ll_comment_bottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(status.getComments_count()>0){
+                    Intent intent = new Intent(context,StatusDetailActivity.class);
+                    intent.putExtra("status",status);
+                    intent.putExtra("scroll2Comment",true);
+                    context.startActivity(intent);
+                }else{
+                    Intent intent = new Intent(context, WriteCommentActivity.class);
+                    intent.putExtra("status",status);
+                    context.startActivity(intent);
+                }
+                ToastUtils.showToast(context,"评论",Toast.LENGTH_SHORT);
+            }
+        });
+
+        holder.ll_like_bottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastUtils.showToast(context,"点赞",Toast.LENGTH_SHORT);
+            }
+        });
         return  convertView;
     }
 

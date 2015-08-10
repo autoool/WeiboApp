@@ -5,7 +5,7 @@ import android.text.TextUtils;
 /**
  * Created by Administrator on 2015/7/30.
  */
-public class PicUrls {
+public class PicUrls extends BaseEntity{
 
     private static final String BMIDDLE_URL = "http://ww3.sinaimg.cn/bmiddle";
     private static final String ORIGINAL_URL = "http://ww3.sinaimg.cn/large";

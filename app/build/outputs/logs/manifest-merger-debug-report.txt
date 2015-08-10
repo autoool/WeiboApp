@@ -70,6 +70,14 @@ activity#com.techidea.weiboapp.activity.LoginActivity
 ADDED from AndroidManifest.xml:28:9
 	android:name
 		ADDED from AndroidManifest.xml:28:19
+activity#com.techidea.weiboapp.activity.WriteCommentActivity
+ADDED from AndroidManifest.xml:30:9
+	android:name
+		ADDED from AndroidManifest.xml:30:19
+activity#com.techidea.weiboapp.activity.StatusDetailActivity
+ADDED from AndroidManifest.xml:32:9
+	android:name
+		ADDED from AndroidManifest.xml:32:19
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 MERGED from com.android.support:appcompat-v7:22.2.1:20:5

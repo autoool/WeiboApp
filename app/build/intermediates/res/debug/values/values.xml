@@ -34,6 +34,7 @@
     <color name="bg_gray">#f2f2f2</color>
     <color name="bg_gray_bar">#f9f9f9</color>
     <color name="bg_gray_dark">#cdcdcd</color>
+    <color name="bg_gray_light">#fcfcfc</color>
     <color name="bg_gray_pressed">#e8e8e8</color>
     <color name="black">#000000</color>
     <!-- From: file:/F:/AndroidStudioProjects/WeiBoApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
@@ -1263,7 +1264,7 @@
         <item name="android:cacheColorHint">@color/transparent</item>
         <item name="android:listSelector">@color/transparent</item>
         <item name="android:scrollbars">none</item>
-        </style>
+    </style>
     <style name="ListViewCommon">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -1272,6 +1273,10 @@
         <item name="android:divider">@null</item>
         <item name="android:dividerHeight">0dp</item>
         <item name="android:scrollbars">none</item>
+    </style>
+    <style name="ListViewLineDivider" parent="ListViewCommon">
+        <item name="android:divider">@color/divider_gray</item>
+        <item name="android:dividerHeight">1px</item>
     </style>
     <!-- From: file:/F:/AndroidStudioProjects/WeiBoApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
@@ -1381,6 +1386,26 @@
         <item name="android:textColor">@drawable/txtcolor_gray2oran_sel</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@color/white</item>
+    </style>
+    <style name="RadioButtonEmotionDashboard">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textSize">@dimen/txtsize_body</item>
+        <item name="android:textColor">@drawable/txtcolor_white2black_sel</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/bg_dgray2white_sel</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="RadioButtonStatusDetailTab">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textSize">@dimen/txtsize_subhead</item>
+        <item name="android:textColor">@color/txt_black</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/layerlist_tab_indicator_sel</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
     </style>
     <!-- From: file:/F:/AndroidStudioProjects/WeiBoApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>

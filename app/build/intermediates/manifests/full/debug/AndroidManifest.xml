@@ -32,6 +32,10 @@
         </activity>
         <activity android:name="com.techidea.weiboapp.activity.LoginActivity" >
         </activity>
+        <activity android:name="com.techidea.weiboapp.activity.WriteCommentActivity" >
+        </activity>
+        <activity android:name="com.techidea.weiboapp.activity.StatusDetailActivity" >
+        </activity>
     </application>
 
 </manifest>

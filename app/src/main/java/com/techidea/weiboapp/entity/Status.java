@@ -1,11 +1,13 @@
 package com.techidea.weiboapp.entity;
 
+import com.sina.weibo.sdk.api.share.Base;
+
 import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2015/7/30.
  */
-public class Status {
+public class Status extends BaseEntity{
 
     private String created_at;
     private long id;

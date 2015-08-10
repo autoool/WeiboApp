@@ -2,6 +2,34 @@
 <items version="2" >
 
     <item
+        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\WeiBoApp\weiboSDK\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="0286057291d76f71459dc5b73dfb561bfe4d3091">
+        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-067073c97528571b016f2657020cc2a4ba0ab1ae.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\WeiBoApp\uil\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="b2ad09335c0e22d8d800205b77c28912142dd497">
+        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-c3690c03c3092614c301bfdbc717371b11d5f414.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\gson-2.2.4-752a4694a6e7953de1b9e1ac68ee96a302f761f3.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-7149745e9cf67d77fd91050c06ac4f2f242478f8.jar" />
+    </item>
+    <item
         jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -16,25 +44,11 @@
         <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-067073c97528571b016f2657020cc2a4ba0ab1ae.jar" />
     </item>
     <item
-        jar="C:\Program Files\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-7f3e1560171baaa665b2775193575783eb7b3d37.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\WeiBoApp\uil\unspecified\jars\classes.jar"
+        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.0 rc3"
-        sha1="b2ad09335c0e22d8d800205b77c28912142dd497">
-        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-c3690c03c3092614c301bfdbc717371b11d5f414.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-7149745e9cf67d77fd91050c06ac4f2f242478f8.jar" />
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-0ed05eb681d6ac94105749b124cf40ea43bb7cd2.jar" />
     </item>
     <item
         jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
@@ -44,18 +58,18 @@
         <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-94b67fd27513203785c98af01387c5d9db4a91e5.jar" />
     </item>
     <item
-        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\WeiBoApp\weiboSDK\unspecified\jars\classes.jar"
+        jar="C:\Program Files\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
         jumboMode="false"
-        revision="22.0.1"
-        sha1="1c9fcd4689dfd914f91f36552fed1345ef4053fb">
-        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-067073c97528571b016f2657020cc2a4ba0ab1ae.jar" />
+        revision="23.0.0 rc3"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-7f3e1560171baaa665b2775193575783eb7b3d37.jar" />
     </item>
     <item
-        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\WeiBoApp\pulltorefresh\unspecified\jars\classes.jar"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="2f505c8b60d8edb88c2a4502405910b19a05e994">
-        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-10702149b6821b198ac71614781638795fc3ca90.jar" />
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\gson-2.2.4-752a4694a6e7953de1b9e1ac68ee96a302f761f3.jar" />
     </item>
     <item
         jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\WeiBoApp\weiboSDK\unspecified\jars\libs\weibosdkcore.jar"
@@ -65,11 +79,18 @@
         <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\weibosdkcore-cc485eb04c2baff763e457f839712e5d911e6cae.jar" />
     </item>
     <item
-        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\WeiBoApp\uil\unspecified\jars\classes.jar"
+        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\WeiBoApp\pulltorefresh\unspecified\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="971bb827d48b4b1e0f2977a11de3af6713add5c1">
-        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-c3690c03c3092614c301bfdbc717371b11d5f414.jar" />
+        sha1="accb81860e5c904183a79e9e11ca4899f86aa421">
+        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-10702149b6821b198ac71614781638795fc3ca90.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-94b67fd27513203785c98af01387c5d9db4a91e5.jar" />
     </item>
     <item
         jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\WeiBoApp\pulltorefresh\unspecified\jars\classes.jar"
@@ -79,46 +100,18 @@
         <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-10702149b6821b198ac71614781638795fc3ca90.jar" />
     </item>
     <item
+        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\WeiBoApp\uil\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="0a23f37618613c5c9ff7969a46d8cfa29e43b11b">
+        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-c3690c03c3092614c301bfdbc717371b11d5f414.jar" />
+    </item>
+    <item
         jar="C:\Program Files\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
+        revision="22.0.1"
         sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
         <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-7f3e1560171baaa665b2775193575783eb7b3d37.jar" />
-    </item>
-    <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\gson-2.2.4-752a4694a6e7953de1b9e1ac68ee96a302f761f3.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-7149745e9cf67d77fd91050c06ac4f2f242478f8.jar" />
-    </item>
-    <item
-        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\gson-2.2.4-752a4694a6e7953de1b9e1ac68ee96a302f761f3.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-94b67fd27513203785c98af01387c5d9db4a91e5.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
-        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-0ed05eb681d6ac94105749b124cf40ea43bb7cd2.jar" />
     </item>
     <item
         jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\WeiBoApp\weiboSDK\unspecified\jars\libs\weibosdkcore.jar"
@@ -126,6 +119,13 @@
         revision="22.0.1"
         sha1="06e990ea2d7b7ccd30cea6c5367314d7314d9f40">
         <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\weibosdkcore-cc485eb04c2baff763e457f839712e5d911e6cae.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="F:\AndroidStudioProjects\WeiBoApp\app\build\intermediates\pre-dexed\debug\classes-7149745e9cf67d77fd91050c06ac4f2f242478f8.jar" />
     </item>
 
 </items>
