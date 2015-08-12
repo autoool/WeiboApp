@@ -51,7 +51,7 @@ public final class R {
 	public static final class style {
 		public static final int AppBaseTheme = 0x7f080077;
 		public static final int AppTheme = 0x7f080078;
-		public static final int com_sina_weibo_sdk_loginview_default_style = 0x7f080131;
-		public static final int com_sina_weibo_sdk_loginview_silver_style = 0x7f080132;
+		public static final int com_sina_weibo_sdk_loginview_default_style = 0x7f080132;
+		public static final int com_sina_weibo_sdk_loginview_silver_style = 0x7f080133;
 	}
 }

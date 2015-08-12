@@ -1,5 +1,7 @@
 package com.techidea.weiboapp.constants;
 
+import com.sina.weibo.sdk.api.share.Base;
+
 /**
  * Created by Administrator on 2015/7/30.
  */
@@ -14,5 +16,18 @@ public interface URLs {
 
     //对一条微博进行评论
     String commentsCreate = BASE_URL + "comments/create.json";
+
+    //转发一条微博
+    String statusesRepost = BASE_URL + "statuses/repost.json";
+
+    //发布一条微博（带图片）
+    String statusesUpload = BASE_URL + "statuses/upload.json";
+
+    //发布一条微博（no photo）
+    String statusesUpdate = BASE_URL + "statuses/update.json";
+
+    String usersShow = BASE_URL + "users/show.json";
+    String statusesUser_timeline = BASE_URL + "statuses/user_timeline.json";
+    String statusesRepost_timeline = BASE_URL + "statuses/repost_timeline.json";
 
 }

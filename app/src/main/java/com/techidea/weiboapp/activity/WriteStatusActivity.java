@@ -1,6 +1,9 @@
 package com.techidea.weiboapp.activity;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -21,9 +24,13 @@ import com.techidea.weiboapp.R;
 import com.techidea.weiboapp.adapter.EmotionGvAdapter;
 import com.techidea.weiboapp.adapter.EmotionPagerAdapter;
 import com.techidea.weiboapp.adapter.WriteStatusGridImgsAdapter;
+import com.techidea.weiboapp.api.BoreWeiboApi;
+import com.techidea.weiboapp.api.SimpleRequestListener;
 import com.techidea.weiboapp.entity.Emotion;
 import com.techidea.weiboapp.entity.Status;
+import com.techidea.weiboapp.util.DialogUtils;
 import com.techidea.weiboapp.util.DisplayUtils;
+import com.techidea.weiboapp.util.ImageUtils;
 import com.techidea.weiboapp.util.StringUtils;
 import com.techidea.weiboapp.util.TitleBuilder;
 import com.techidea.weiboapp.widget.WrapHeightGridView;
@@ -72,11 +79,13 @@ public class WriteStatusActivity  extends BaseActivity implements View.OnClickLi
     private Status cardStatus;
 
     private ImageLoader imageLoader = ImageLoader.getInstance();
+    private BoreWeiboApi weiboApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_status);
+        weiboApi = new BoreWeiboApi(getApplicationContext());
         retweeted_status = (Status)getIntent().getSerializableExtra("status");
         initView();
     }
@@ -126,6 +135,39 @@ public class WriteStatusActivity  extends BaseActivity implements View.OnClickLi
 
         initRetweetedStatus();
         initEmotion();
+    }
+
+    /**
+     * 发送微博
+     */
+    private void sendStatus(){
+        String comment = et_write_status.getText().toString();
+        if(TextUtils.isEmpty(comment)){
+            showToast("微博内容不能为空");
+            return;
+        }
+
+        String imgFilePath = null;
+        if(imgUris.size() > 0){
+            //微博Api只支持上传一张图片
+            Uri uri = imgUris.get(0);
+            imgFilePath = ImageUtils.getImageAbsolutePath(this,uri);
+        }
+
+        //转发微博的id
+        long retweetedStatsId = cardStatus == null ? -1 : cardStatus.getId();
+        //上传微博api接口
+        progressDialog.show();
+        weiboApi.statusesSend(et_write_status.getText().toString(),imgFilePath,retweetedStatsId,
+                new SimpleRequestListener(this,progressDialog){
+                    @Override
+                    public void onComplete(String response) {
+                        super.onComplete(response);
+                        setResult(RESULT_OK);
+                        showToast("微博发送成功");
+                        WriteStatusActivity.this.finish();
+                    }
+                });
     }
 
     /**
@@ -192,7 +234,7 @@ public class WriteStatusActivity  extends BaseActivity implements View.OnClickLi
 
         //检查最后是否有不足20个表情的剩余情况
         if(emotionNames.size() > 0){
-            GridView gv = CreateEmotionGridView(emotionNames,gvWidth,spacing,itemWidth,gvHeight);
+            GridView gv = createEmotionGridView(emotionNames, gvWidth, spacing, itemWidth, gvHeight);
             gvs.add(gv);
         }
         //将多个GridView添加显示到ViewPager中
@@ -283,7 +325,7 @@ public class WriteStatusActivity  extends BaseActivity implements View.OnClickLi
             }
         }else if(itemAdapter instanceof EmotionGvAdapter){
             //点击的是表情
-            EmotionGvAdapter emotionGvAdapter = (EmotionGvAdapter)itemAdapter；
+            EmotionGvAdapter emotionGvAdapter = (EmotionGvAdapter)itemAdapter;
 
             if(position == emotionGvAdapter.getCount() -1){
                 //如果点击了最后一个回退按钮，则调用删除键事件
@@ -309,6 +351,52 @@ public class WriteStatusActivity  extends BaseActivity implements View.OnClickLi
     }
 
     private void showIfNeedEditDialog(final Uri imageUri){
-        DialogUtils.show
+        DialogUtils.showListDialog(this, "是否需要编辑图片?", new String[]{"编辑图片", "使用原图"},
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(i==0){
+                            Intent intent = new Intent(WriteStatusActivity.this,ImageFilterActivity.class);
+                            intent.putExtra("path", ImageUtils.getImageAbsolutePath(WriteStatusActivity.this,imageUri));
+                            startActivityForResult(intent,1234);
+                        }else{
+                            imgUris.add(imageUri);
+                            updateImgs();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case ImageUtils.GET_IMAGE_BY_CAMERA:
+                if (resultCode == RESULT_CANCELED) {
+                    //如果拍照取消，将之前新增的图片地址删除
+                    ImageUtils.deleteImageUri(this, ImageUtils.imageUriFromCamera);
+                } else {
+                    //拍照后将图片添加到页面
+
+                    ImageUtils.cropImage(this, ImageUtils.imageUriFromCamera);
+                }
+                break;
+            case ImageUtils.CROP_IMAGE:
+                if (resultCode != RESULT_CANCELED) {
+                    imgUris.add(ImageUtils.cropImageUri);
+                    updateImgs();
+                }
+                break;
+            case ImageUtils.GET_IMAGE_FROM_PHONE:
+                if (resultCode != RESULT_CANCELED) {
+                    //本地相册选择后将图片添加到页面上
+                    imgUris.add(data.getData());
+                    updateImgs();
+                }
+                break;
+            default:
+                break;
+        }
     }
 }

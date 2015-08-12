@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_imagefilter_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:background="@drawable/image_filter_title_bg"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/imagefilter_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/image_filter_title_back_bg"
+            android:text="取消"
+            android:textColor="#ffffff"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imagefilter_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/image_filter_action_back_arrow"/>
+
+            <ImageButton
+                android:id="@+id/imagefilter_forward"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/image_filter_action_forward_arrow"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/imagefilter_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/image_filter_title_text_btn_bg"
+            android:text="完成"
+            android:textColor="#ffffff"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#000"
+        android:padding="20dp">
+
+        <com.boredream.nodrinklout.view.CropImageView>
+
+        </com.boredream.nodrinklout.view.CropImageView>
+
+    </RelativeLayout>
+</LinearLayout>

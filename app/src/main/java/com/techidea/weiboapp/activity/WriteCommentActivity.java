@@ -82,7 +82,7 @@ public class WriteCommentActivity extends BaseActivity implements View.OnClickLi
 
         String comment = et_write_status.getText().toString();
         if(TextUtils.isEmpty(comment)){
-            showToast("评论内容不能为空");
+            showToast("微博内容不能为空");
             return;
         }
 
