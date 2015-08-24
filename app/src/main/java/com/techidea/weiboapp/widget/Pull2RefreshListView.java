@@ -34,6 +34,24 @@ public class Pull2RefreshListView extends PullToRefreshListView {
         return listview;
 //        return super.createListView(context, attrs);
     }
+
+    @Override
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        super.onScrollChanged(l, t, oldl, oldt);
+        if(onPlvScrollListener != null){
+            onPlvScrollListener.onScrollChanged(l,t,oldl,oldt);
+        }
+    }
+
+    private OnPlvScrollListener onPlvScrollListener;
+
+    public void setOnPlvScrollListener(OnPlvScrollListener onPlvScrollListener){
+        this.onPlvScrollListener = onPlvScrollListener;
+    }
+
+    public static interface OnPlvScrollListener{
+        void onScrollChanged(int l,int t,int oldl,int oldt);
+    }
 }
 
 

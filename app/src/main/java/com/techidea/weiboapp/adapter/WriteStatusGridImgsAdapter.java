@@ -22,6 +22,12 @@ public class WriteStatusGridImgsAdapter extends BaseAdapter {
     private ArrayList<Uri> datas;
     private GridView gv;
 
+    public WriteStatusGridImgsAdapter(Context context, ArrayList<Uri> datas, GridView gv) {
+        this.context = context;
+        this.datas = datas;
+        this.gv = gv;
+    }
+
     @Override
     public int getCount() {
         return datas.size() > 0 ? datas.size() +1 : 0;

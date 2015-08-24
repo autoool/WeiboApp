@@ -63,9 +63,9 @@
         android:background="#000"
         android:padding="20dp">
 
-        <com.boredream.nodrinklout.view.CropImageView>
 
-        </com.boredream.nodrinklout.view.CropImageView>
+
+
 
     </RelativeLayout>
 </LinearLayout>

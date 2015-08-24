@@ -3,7 +3,6 @@ package com.techidea.weiboapp.activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -21,6 +20,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.techidea.weiboapp.BaseActivity;
 import com.techidea.weiboapp.R;
+import com.techidea.weiboapp.activity.imgfilter.ImageFilterActivity;
 import com.techidea.weiboapp.adapter.EmotionGvAdapter;
 import com.techidea.weiboapp.adapter.EmotionPagerAdapter;
 import com.techidea.weiboapp.adapter.WriteStatusGridImgsAdapter;
@@ -37,7 +37,6 @@ import com.techidea.weiboapp.widget.WrapHeightGridView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by Administrator on 2015/8/9.
@@ -209,6 +208,9 @@ public class WriteStatusActivity  extends BaseActivity implements View.OnClickLi
         }
     }
 
+    /**
+     * 初始化表情面板内容
+     */
     private void initEmotion(){
         //获取屏幕宽度
         int gvWidth = DisplayUtils.getScreenWidthPixels(this);
@@ -270,6 +272,9 @@ public class WriteStatusActivity  extends BaseActivity implements View.OnClickLi
         return  gv;
     }
 
+    /**
+     * 更新图片显示
+     */
     private void updateImgs(){
         if(imgUris.size()>0){
             //如果有图片则显示gridview，同时更新内容

@@ -22,19 +22,19 @@ public class RotateBitmap {
         this.mRotation = mRotation % 360;
     }
 
-    public Bitmap getmBitmap() {
+    public Bitmap getBitmap() {
         return mBitmap;
     }
 
-    public void setmBitmap(Bitmap mBitmap) {
+    public void setBitmap(Bitmap mBitmap) {
         this.mBitmap = mBitmap;
     }
 
-    public int getmRotation() {
+    public int getRotation() {
         return mRotation;
     }
 
-    public void setmRotation(int mRotation) {
+    public void setRotation(int mRotation) {
         this.mRotation = mRotation;
     }
 

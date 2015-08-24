@@ -1420,6 +1420,9 @@
         <item name="android:button">@null</item>
         <item name="android:gravity">center</item>
     </style>
+    <style name="RadioButtonUserInfoTab" parent="RadioButtonStatusDetailTab">
+        <item name="android:background">@color/white</item>
+    </style>
     <!-- From: file:/F:/AndroidStudioProjects/WeiBoApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="RtlOverlay.DialogWindowTitle.AppCompat" parent="Base.DialogWindowTitle.AppCompat">

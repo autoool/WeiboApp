@@ -245,5 +245,25 @@ public class BoreWeiboApi extends WeiboAPI {
         requestInMainLooper(URLs.statusesRepost_timeline,params,WeiboAPI.HTTPMETHOD_GET,listener);
     }
 
+    /**
+     * 根据用户ID获取用户信息(uid和screen_name二选一)
+     *
+     * @param uid
+     *            根据用户ID获取用户信息
+     * @param screen_name
+     *            需要查询的用户昵称。
+     * @param listener
+     */
+    public void usersShow(String uid,String screen_name,RequestListener listener){
+        WeiboParameters params = new WeiboParameters();
+        if(!TextUtils.isEmpty(uid)){
+            params.add("uid",uid);
+        }else if(!TextUtils.isEmpty(screen_name)){
+            params.add("screen_name",screen_name);
+        }
+        requestInMainLooper(URLs.usersShow,params,WeiboAPI.HTTPMETHOD_GET,listener);
+    }
+
+
 
 }

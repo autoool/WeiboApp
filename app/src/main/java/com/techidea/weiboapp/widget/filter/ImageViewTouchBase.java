@@ -130,7 +130,7 @@ public class ImageViewTouchBase extends ImageView {
     // image orientation. If in the future we decode the full 3 megapixel image,
     // rather than the current 1024x768, this should be changed down to 200%.
     protected  float maxZoom(){
-        if(mBitmapDisplayed.getmBitmap() == null){
+        if(mBitmapDisplayed.getBitmap() == null){
             return  1F;
         }
         float fw = (float)mBitmapDisplayed.getWidth()/(float)mThisWidth;
@@ -193,7 +193,7 @@ public class ImageViewTouchBase extends ImageView {
         if(getScale() >= mMaxZoom){
             return; // Don't let the user zoom into the molecular level.
         }
-        if(mBitmapDisplayed.getmBitmap() == null){
+        if(mBitmapDisplayed.getBitmap() == null){
             return;
         }
         float cx = getWidth()/2F;
@@ -206,7 +206,7 @@ public class ImageViewTouchBase extends ImageView {
 
 
     protected  void zoomOut(float rate){
-        if(mBitmapDisplayed.getmBitmap() == null){
+        if(mBitmapDisplayed.getBitmap() == null){
             return;
         }
         float cx = getWidth() /2F;
@@ -244,7 +244,7 @@ public class ImageViewTouchBase extends ImageView {
             mOnLayoutRunnable = null;
             r.run();
         }
-        if(mBitmapDisplayed.getmBitmap() != null){
+        if(mBitmapDisplayed.getBitmap() != null){
             getProperBaseMatrix(mBitmapDisplayed,mBaseMatrix);
             setImageMatrix(getImageViewMatrix());
         }
@@ -277,9 +277,9 @@ public class ImageViewTouchBase extends ImageView {
             d.setDither(true);
         }
 
-        Bitmap old = mBitmapDisplayed.getmBitmap();
-        mBitmapDisplayed.setmBitmap(bitmap);
-        mBitmapDisplayed.setmRotation(rotation);
+        Bitmap old = mBitmapDisplayed.getBitmap();
+        mBitmapDisplayed.setBitmap(bitmap);
+        mBitmapDisplayed.setRotation(rotation);
 
         if(old!=null && old!= bitmap && mRecycler != null){
             mRecycler.recycle(old);
@@ -310,9 +310,9 @@ public class ImageViewTouchBase extends ImageView {
             return;
         }
 
-        if(bitmap.getmBitmap() != null){
+        if(bitmap.getBitmap() != null){
             getProperBaseMatrix(bitmap,mBaseMatrix);
-            setImageBitmap(bitmap.getmBitmap(),bitmap.getmRotation());
+            setImageBitmap(bitmap.getBitmap(),bitmap.getRotation());
         }else{
             mBaseMatrix.reset();
             setImageBitmap(null);
@@ -332,14 +332,14 @@ public class ImageViewTouchBase extends ImageView {
     // is scaled larger than the view and is translated out of view
     // then translate it back into view (i.e. eliminate black bars).
     public void center(boolean horizontal,boolean vertical){
-        if(mBitmapDisplayed.getmBitmap() == null){
+        if(mBitmapDisplayed.getBitmap() == null){
             return;
         }
 
         Matrix m = getImageMatrix();
 
-        RectF rect = new RectF(0,0,mBitmapDisplayed.getmBitmap().getWidth(),
-                mBitmapDisplayed.getmBitmap().getHeight());
+        RectF rect = new RectF(0,0,mBitmapDisplayed.getBitmap().getWidth(),
+                mBitmapDisplayed.getBitmap().getHeight());
         m.mapRect(rect);
 
         float height = rect.height();
