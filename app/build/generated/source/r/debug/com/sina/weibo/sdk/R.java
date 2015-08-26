@@ -8,8 +8,8 @@ package com.sina.weibo.sdk;
 
 public final class R {
 	public static final class color {
-		public static final int com_sina_weibo_sdk_blue = 0x7f0b001a;
-		public static final int com_sina_weibo_sdk_loginview_text_color = 0x7f0b001b;
+		public static final int com_sina_weibo_sdk_blue = 0x7f0b001b;
+		public static final int com_sina_weibo_sdk_loginview_text_color = 0x7f0b001c;
 	}
 	public static final class dimen {
 		public static final int activity_horizontal_margin = 0x7f070010;

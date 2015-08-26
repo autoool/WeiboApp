@@ -49,7 +49,7 @@ public class DialogUtils {
      * @param context
      * @param title
      * @param msg
-     * @param OnClickListener
+     * @param onClickListener
      * @return
      */
     public static AlertDialog showConfirmDialog(Context context,String title,
@@ -176,7 +176,7 @@ public class DialogUtils {
      * @param imgUri
      */
     public static void showImahe(Context context,Uri imgUri){
-        Intent intent = new Intent(Intent.ACTION_VIEW)；
+        Intent intent = new Intent(Intent.ACTION_VIEW);
 
         intent.setDataAndType(imgUri,"image/*");
         context.startActivity(intent);

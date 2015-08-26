@@ -1,5 +1,7 @@
 package com.techidea.weiboapp.activity.imgfilter;
 
+import android.os.Bundle;
+
 import com.techidea.weiboapp.BaseActivity;
 
 /**
@@ -8,4 +10,8 @@ import com.techidea.weiboapp.BaseActivity;
  */
 public class ImageFilterCropActivity extends BaseActivity {
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 }

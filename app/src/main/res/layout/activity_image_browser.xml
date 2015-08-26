@@ -33,6 +33,17 @@
         android:padding="16dp">
 
         <Button
+            android:id="@+id/btn_save"
+            style="@style/TextViewSubhead"
+            android:layout_width="56dp"
+            android:layout_height="36dp"
+            android:background="@drawable/shape_corner_rect_agray"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="保存"
+            android:textColor="@color/white" />
+
+        <Button
             android:id="@+id/btn_original_image"
             style="@style/TextViewSubhead"
             android:layout_width="56dp"

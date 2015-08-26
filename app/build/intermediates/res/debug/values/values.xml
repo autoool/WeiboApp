@@ -21,6 +21,7 @@
     <color name="accent_material_light">@color/material_deep_teal_500</color>
     <!-- From: file:/F:/AndroidStudioProjects/WeiBoApp/app/src/main/res/values/colors.xml -->
     <eat-comment/>
+    <color name="alpha_black">#49000000</color>
     <color name="alpha_white">#49ffffff</color>
     <!-- From: file:/F:/AndroidStudioProjects/WeiBoApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>

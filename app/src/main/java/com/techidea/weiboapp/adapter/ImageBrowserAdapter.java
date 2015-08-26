@@ -123,7 +123,10 @@ public class ImageBrowserAdapter extends PagerAdapter{
 
     @Override
     public int getCount() {
-        return 0;
+        if(pics.size() > 1){
+            return  Integer.MAX_VALUE;
+        }
+        return pics.size();
     }
 
     @Override

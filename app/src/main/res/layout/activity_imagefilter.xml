@@ -61,11 +61,133 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#000"
-        android:padding="20dp">
+        android:padding="20dip">
 
+        <com.techidea.weiboapp.widget.filter.CropImageView
+            android:id="@+id/imagefilter_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:scaleType="centerInside"
+            />
 
-
-
-
+        <ProgressBar
+            android:id="@+id/imagefilter_crop_progressbar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            />
     </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dip">
+
+        <LinearLayout
+            android:id="@+id/ll_imagefilter_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/image_filter_title_bg"
+            android:orientation="horizontal"
+            android:padding="4dip">
+
+            <Button
+                android:id="@+id/imagefilter_cut"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableTop="@drawable/image_filter_cut_action"
+                android:text="剪裁"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                />
+
+            <Button
+                android:id="@+id/imagefilter_effect"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableTop="@drawable/image_filter_effect_action"
+                android:text="特效"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                />
+
+            <Button
+                android:id="@+id/imagefilter_face"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableTop="@drawable/image_filter_face_action"
+                android:text="表情"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                />
+
+            <Button
+                android:id="@+id/imagefilter_frame"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableTop="@drawable/image_filter_frame_action"
+                android:text="边框"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_imagefilter_crop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/image_filter_title_bg"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/imagefilter_crop_left"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableTop="@drawable/image_filter_left_rotate"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/imagefilter_crop_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableTop="@drawable/image_filter_right_rotate"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </FrameLayout>
+
 </LinearLayout>
