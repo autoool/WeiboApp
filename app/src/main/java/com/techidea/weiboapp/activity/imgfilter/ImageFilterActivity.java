@@ -135,7 +135,7 @@ public class ImageFilterActivity extends BaseActivity implements View.OnClickLis
         ImageSize targetImageSize = new ImageSize(DisplayUtils.getScreenWidthPixels(this),
                 DisplayUtils.getScreenHeightPixels(this));
         //本地图片，同步获取
-        mOldBitmap = imageLoader.loadImageSync("file://" + mOldPath,targetImageSize);
+//        mOldBitmap = imageLoader.loadImageSync("file://" + mOldPath,targetImageSize);
         mDisplay.setImageBitmap(mOldBitmap);
         mNewBitmap = mOldBitmap;
     }

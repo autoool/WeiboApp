@@ -33,7 +33,7 @@ import com.techidea.weiboapp.util.TitleBuilder;
 import com.techidea.weiboapp.widget.Pull2RefreshListView;
 import com.techidea.weiboapp.widget.UnderlineIndicatorView;
 
-import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
+//import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +42,8 @@ import java.util.List;
  * Created by Administrator on 2015/8/23.
  */
 public class UserInfoActivity extends BaseActivity implements
-        View.OnClickListener,AdapterView.OnItemClickListener,RadioGroup.OnCheckedChangeListener{
+        View.OnClickListener,AdapterView.OnItemClickListener,
+        RadioGroup.OnCheckedChangeListener{
 
     private View title;
     private ImageView titlebar_iv_left;
@@ -79,17 +80,11 @@ public class UserInfoActivity extends BaseActivity implements
     private int minImageHeight = -1;
     private int maxImageHeight = -1;
 
-    private ImageLoader imageLoader = ImageLoader.getInstance();
-
-    private BoreWeiboApi weiboApi;
-    private ProgressDialog progressDialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
-        weiboApi = new BoreWeiboApi(getApplicationContext());
-        userName = getIntent().getStringExtra("userName");
+        userName = intent.getStringExtra("userName");
         if(TextUtils.isEmpty(userName)){
             isCurrentUser = true;
             user = application.currentUser;
@@ -257,8 +252,8 @@ public class UserInfoActivity extends BaseActivity implements
 
         tv_name.setText(user.getName());
         titlebar_tv.setText(user.getName());
-        imageLoader.displayImage(user.getAvatar_large(),new ImageViewAware(iv_avatar),
-                ImageOptHelper.getAvatarOptions());
+//        imageLoader.displayImage(user.getAvatar_large(),new ImageViewAware(iv_avatar),
+//                ImageOptHelper.getAvatarOptions());
         tv_follows.setText("关注 " + user.getFriends_count());
         tv_fans.setText("粉丝 " + user.getFollowers_count());
         tv_sign.setText("简介" + user.getDescription());
@@ -271,7 +266,7 @@ public class UserInfoActivity extends BaseActivity implements
                     @Override
                     public void onComplete(String response) {
                         super.onComplete(response);
-                        user = new Gson().fromJson(response, User.class);
+                        user = gson.fromJson(response, User.class);
                         setUserInfo();
                     }
                 });
@@ -294,7 +289,7 @@ public class UserInfoActivity extends BaseActivity implements
                         if (requestPage == 1) {
                             statuses.clear();
                         }
-                        addStatus(new Gson().fromJson(response, StatusTimeLineResponse.class));
+                        addStatus(gson.fromJson(response, StatusTimeLineResponse.class));
                     }
 
                     @Override

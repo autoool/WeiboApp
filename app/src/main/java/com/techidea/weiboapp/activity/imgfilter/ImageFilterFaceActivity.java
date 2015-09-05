@@ -18,8 +18,11 @@ import android.widget.RelativeLayout;
 import com.techidea.weiboapp.BaseActivity;
 import com.techidea.weiboapp.R;
 import com.techidea.weiboapp.util.PhotoUtil;
+import com.techidea.weiboapp.widget.filter.FaceImage;
+import com.techidea.weiboapp.widget.filter.FaceImageView;
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 /**
  * Created by zhangchao on 2015/8/27.

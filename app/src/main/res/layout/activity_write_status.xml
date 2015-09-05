@@ -26,7 +26,7 @@
                 android:gravity="top"
                 android:minLines="3"
                 android:maxLength="140"
-                android:hint="写评论..."
+                android:hint=""
                 android:textColorHint="@color/txt_gray"
                 />
 
@@ -118,7 +118,7 @@
         android:id="@+id/ll_emotion_dashboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+
         android:orientation="vertical"
         >
 
@@ -134,10 +134,10 @@
             android:layout_height="48dp"
             android:orientation="horizontal"
             >
-            <!--<RadioButton-->
-                <!--android:id="@+id/rb_emotion_dashboard_recently"-->
-                <!--style="@style/RadioButtonEmotionDashboard"-->
-                <!--android:text="最近"/>-->
+            <RadioButton
+                android:id="@+id/rb_emotion_dashboard_recently"
+                style="@style/RadioButtonEmotionDashboard"
+                android:text="最近"/>
             <RadioButton
                 android:id="@+id/rb_emotion_dashboard_default"
                 style="@style/RadioButtonEmotionDashboard"

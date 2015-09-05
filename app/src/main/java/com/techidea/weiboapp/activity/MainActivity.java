@@ -1,5 +1,6 @@
 package com.techidea.weiboapp.activity;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -24,12 +25,15 @@ public class MainActivity extends FragmentActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_tab);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        initView();
+
         //存放fragment
         controller = FragmentController.getInstance(this, R.id.fl_content);
         controller.showFragment(0);
-        initView();
+
     }
 
     @Override
@@ -37,7 +41,8 @@ public class MainActivity extends FragmentActivity implements
         // TODO Auto-generated method stub
         switch(v.getId()){
             case R.id.iv_add:
-                ToastUtils.showToast(this, "add", Toast.LENGTH_SHORT);
+                Intent intent = new Intent(MainActivity.this,WriteStatusActivity.class);
+                startActivityForResult(intent,110);
                 break;
             default:
                 break;

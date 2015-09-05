@@ -104,16 +104,11 @@ public class StatusDetailActivity extends BaseActivity implements
     private List<Comment> comments = new ArrayList<Comment>();
     private StatusCommentAdapter adapter;
 
-    private ImageLoader imageLoader = ImageLoader.getInstance();
-    private BoreWeiboApi weiboApi;
-    private Gson gson = new Gson();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_detail);
-
-        weiboApi = new BoreWeiboApi(getApplicationContext());
 
         //获取intent 传入的信息
         status = (Status) getIntent().getSerializableExtra("status");

@@ -9,15 +9,12 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.techidea.weiboapp.entity.BrowserPic;
 import com.techidea.weiboapp.entity.PicUrls;
 import com.techidea.weiboapp.util.DisplayUtils;
 
-import java.io.File;
+
 import java.util.ArrayList;
 
 /**
@@ -39,15 +36,15 @@ public class ImageBrowserAdapter extends PagerAdapter{
         pics = new ArrayList<BrowserPic>();
         BrowserPic browserPic;
         for (PicUrls picUrl : picUrls){
-            browserPic = new BrowserPic();
-            browserPic.setPic(picUrl);
-            Bitmap oBm = mImageLoader.getMemoryCache().get(picUrl.getOriginal_pic());
-            File disCache = mImageLoader.getDiskCache().get(picUrl.getOriginal_pic());
-            if(oBm != null || disCache != null){
-                browserPic.setIsOriginalPic(true);
-                oBm.recycle();
-            }
-            pics.add(browserPic);
+//            browserPic = new BrowserPic();
+//            browserPic.setPic(picUrl);
+//            Bitmap oBm = mImageLoader.getMemoryCache().get(picUrl.getOriginal_pic());
+//            File disCache = mImageLoader.getDiskCache().get(picUrl.getOriginal_pic());
+//            if(oBm != null || disCache != null){
+//                browserPic.setIsOriginalPic(true);
+//                oBm.recycle();
+//            }
+//            pics.add(browserPic);
         }
     }
 
@@ -83,34 +80,34 @@ public class ImageBrowserAdapter extends PagerAdapter{
 
         String url = browserPic.isOriginalPic() ? picUrls.getOriginal_pic() : picUrls.getBmiddle_pic();
 
-        mImageLoader.loadImage(url, new ImageLoadingListener() {
-            @Override
-            public void onLoadingStarted(String s, View view) {
-
-            }
-
-            @Override
-            public void onLoadingFailed(String s, View view, FailReason failReason) {
-
-            }
-
-            @Override
-            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-                browserPic.setBitmap(bitmap);
-
-                float scale = (float)bitmap.getHeight()/bitmap.getWidth();
-                int height = Math.max((int) (screenWidth * scale),screenHeight);
-                LinearLayout.LayoutParams params = new LinearLayout
-                        .LayoutParams(screenWidth,height);
-                iv.setLayoutParams(params);
-                iv.setImageBitmap(bitmap);
-            }
-
-            @Override
-            public void onLoadingCancelled(String s, View view) {
-
-            }
-        });
+//        mImageLoader.loadImage(url, new ImageLoadingListener() {
+//            @Override
+//            public void onLoadingStarted(String s, View view) {
+//
+//            }
+//
+//            @Override
+//            public void onLoadingFailed(String s, View view, FailReason failReason) {
+//
+//            }
+//
+//            @Override
+//            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+//                browserPic.setBitmap(bitmap);
+//
+//                float scale = (float)bitmap.getHeight()/bitmap.getWidth();
+//                int height = Math.max((int) (screenWidth * scale),screenHeight);
+//                LinearLayout.LayoutParams params = new LinearLayout
+//                        .LayoutParams(screenWidth,height);
+//                iv.setLayoutParams(params);
+//                iv.setImageBitmap(bitmap);
+//            }
+//
+//            @Override
+//            public void onLoadingCancelled(String s, View view) {
+//
+//            }
+//        });
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

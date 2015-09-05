@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -41,7 +42,8 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/8/9.
  */
-public class WriteStatusActivity  extends BaseActivity implements View.OnClickListener,
+public class WriteStatusActivity  extends BaseActivity implements
+        View.OnClickListener,
         AdapterView.OnItemClickListener{
 
     //输入框
@@ -77,14 +79,10 @@ public class WriteStatusActivity  extends BaseActivity implements View.OnClickLi
     //显示在页面中 实际需要转发内容的微博
     private Status cardStatus;
 
-    private ImageLoader imageLoader = ImageLoader.getInstance();
-    private BoreWeiboApi weiboApi;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_status);
-        weiboApi = new BoreWeiboApi(getApplicationContext());
         retweeted_status = (Status)getIntent().getSerializableExtra("status");
         initView();
     }
@@ -94,9 +92,19 @@ public class WriteStatusActivity  extends BaseActivity implements View.OnClickLi
         new TitleBuilder(this)
                 .setTitleText("发微博")
                 .setLeftText("取消")
-                .setLeftOnClickListener(this)
+                .setLeftOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        finish();
+                    }
+                })
                 .setRightText("发送")
-                .setRightOnClickListener(this);
+                .setRightOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        sendStatus();
+                    }
+                });
         //输入框
         et_write_status = (EditText)findViewById(R.id.et_write_status);
         //添加九宫格图片
@@ -122,9 +130,10 @@ public class WriteStatusActivity  extends BaseActivity implements View.OnClickLi
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("微博发布中...");
 
+
         statusImgsAdapter = new WriteStatusGridImgsAdapter(this,imgUris,gv_write_status);
         gv_write_status.setAdapter(statusImgsAdapter);
-        gv_write_status.setOnClickListener(this);
+        gv_write_status.setOnItemClickListener(this);
 
         iv_image.setOnClickListener(this);
         iv_at.setOnClickListener(this);
@@ -263,7 +272,8 @@ public class WriteStatusActivity  extends BaseActivity implements View.OnClickLi
         gv.setPadding(padding, padding, padding, padding);
         gv.setHorizontalSpacing(padding);
         gv.setVerticalSpacing(padding);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(gvWidth,gvHeight);
+
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(gvWidth,gvHeight);
         gv.setLayoutParams(params);
         //给GridView设置表情图片
         EmotionGvAdapter adapter = new EmotionGvAdapter(this,emotionNames,itemWidth);

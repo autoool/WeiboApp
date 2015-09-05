@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.Layout;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -46,7 +47,7 @@ public class EmotionGvAdapter extends BaseAdapter{
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ImageView iv = new ImageView(context);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(itemWidth,itemWidth);
+        AbsListView.LayoutParams params = new AbsListView.LayoutParams(itemWidth,itemWidth);
         iv.setPadding(itemWidth/8,itemWidth/8,itemWidth/8,itemWidth/8);
         iv.setLayoutParams(params);
 
@@ -56,6 +57,6 @@ public class EmotionGvAdapter extends BaseAdapter{
             String emotionName = emotionNames.get(i);
             iv.setImageResource(Emotion.getImgByName(emotionName));
         }
-        return null;
+        return iv;
     }
 }

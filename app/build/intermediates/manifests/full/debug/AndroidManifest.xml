@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="17"
-        android:targetSdkVersion="22" />
+        android:minSdkVersion="16"
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -28,14 +28,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.techidea.weiboapp.activity.MainActivity" >
-        </activity>
-        <activity android:name="com.techidea.weiboapp.activity.LoginActivity" >
-        </activity>
-        <activity android:name="com.techidea.weiboapp.activity.WriteCommentActivity" >
-        </activity>
-        <activity android:name="com.techidea.weiboapp.activity.StatusDetailActivity" >
-        </activity>
+        <activity android:name="com.techidea.weiboapp.activity.MainActivity" />
+        <activity android:name="com.techidea.weiboapp.activity.LoginActivity" />
+        <activity android:name="com.techidea.weiboapp.activity.WriteCommentActivity" />
+        <activity android:name="com.techidea.weiboapp.activity.StatusDetailActivity" />
+        <activity android:name="com.techidea.weiboapp.activity.WriteStatusActivity" />
+        <activity android:name="com.techidea.weiboapp.activity.UserInfoActivity" />
+        <activity android:name="com.techidea.weiboapp.activity.ImageBrowserActivity" />
+        <activity android:name="com.techidea.weiboapp.activity.imgfilter.ImageFilterActivity" />
+        <activity android:name="com.techidea.weiboapp.activity.imgfilter.ImageFilterCropActivity" />
+        <activity android:name="com.techidea.weiboapp.activity.imgfilter.ImageFilterEffectActivity" />
+        <activity android:name="com.techidea.weiboapp.activity.imgfilter.ImageFilterFaceActivity" />
+        <activity android:name="com.techidea.weiboapp.activity.imgfilter.ImageFilterFrameActivity" />
     </application>
 
 </manifest>

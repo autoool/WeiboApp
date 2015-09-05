@@ -33,15 +33,13 @@ public class WriteCommentActivity extends BaseActivity implements View.OnClickLi
 
     //待评论微博
     private Status status;
-    private BoreWeiboApi weiboApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_status);
-        weiboApi = new BoreWeiboApi(getApplicationContext());
         //获取Intent传入的微博
-        status = (Status)getIntent().getSerializableExtra("status");
+        status = (Status)intent.getSerializableExtra("status");
         initView();
     }
 

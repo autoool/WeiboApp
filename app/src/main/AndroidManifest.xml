@@ -23,16 +23,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.MainActivity" >
-        </activity>
-        <activity android:name=".activity.LoginActivity" >
-        </activity>
-        <activity android:name=".activity.WriteCommentActivity" >
-        </activity>
-        <activity android:name=".activity.StatusDetailActivity" >
-        </activity>
-
-
+        <activity android:name=".activity.MainActivity" ></activity>
+        <activity android:name=".activity.LoginActivity" ></activity>
+        <activity android:name=".activity.WriteCommentActivity" ></activity>
+        <activity android:name=".activity.StatusDetailActivity" ></activity>
+        <activity android:name=".activity.WriteStatusActivity"></activity>
+        <activity android:name=".activity.UserInfoActivity"></activity>
+        <activity android:name=".activity.ImageBrowserActivity"></activity>
+        <activity android:name=".activity.imgfilter.ImageFilterActivity"></activity>
+        <activity android:name=".activity.imgfilter.ImageFilterCropActivity"></activity>
+        <activity android:name=".activity.imgfilter.ImageFilterEffectActivity"></activity>
+        <activity android:name=".activity.imgfilter.ImageFilterFaceActivity"></activity>
+        <activity android:name=".activity.imgfilter.ImageFilterFrameActivity"></activity>
 
     </application>
 
