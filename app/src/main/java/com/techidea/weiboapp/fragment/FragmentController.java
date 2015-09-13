@@ -40,7 +40,7 @@ public class FragmentController {
         fragments.add(new HomeFragment());
         fragments.add(new MessageFragment());
         fragments.add(new SearchFragment());
-        fragments.add(new User2Fragment());
+        fragments.add(new UserFragment());
 
         FragmentTransaction ft = fm.beginTransaction();
         for(Fragment fragment : fragments) {

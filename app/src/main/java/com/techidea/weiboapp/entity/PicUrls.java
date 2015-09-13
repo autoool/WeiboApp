@@ -14,7 +14,9 @@ public class PicUrls extends BaseEntity{
     private String bmiddle_pic;
     private String original_pic;
 
-    private String getImageId()
+    private boolean showOriImag;
+
+    public String getImageId()
     {
         int indexOf = thumbnail_pic.lastIndexOf("/");
         return thumbnail_pic.substring(indexOf);
@@ -42,5 +44,13 @@ public class PicUrls extends BaseEntity{
 
     public void setBmiddle_pic(String bmiddle_pic) {
         this.bmiddle_pic = bmiddle_pic;
+    }
+
+    public boolean isShowOriImag(){
+        return showOriImag;
+    }
+
+    public void setShowOriImag(boolean showOriImag){
+        this.showOriImag = showOriImag;
     }
 }

@@ -27,6 +27,7 @@ public interface URLs {
     String statusesUpdate = BASE_URL + "statuses/update.json";
 
     String usersShow = BASE_URL + "users/show.json";
+
     String statusesUser_timeline = BASE_URL + "statuses/user_timeline.json";
     String statusesRepost_timeline = BASE_URL + "statuses/repost_timeline.json";
 

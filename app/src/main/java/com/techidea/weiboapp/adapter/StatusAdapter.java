@@ -140,7 +140,7 @@ public class StatusAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, UserInfoActivity.class);
-                intent.putExtra("userNmae", user.getName());
+                intent.putExtra("userName", user.getName());
                 context.startActivity(intent);
             }
         });
@@ -155,6 +155,7 @@ public class StatusAdapter extends BaseAdapter {
 
         final Status retweeted_status = status.getRetweeted_status();
         if (retweeted_status != null) {
+
             User retUser = retweeted_status.getUser();
 
             holder.include_retweeted_status.setVisibility(View.VISIBLE);

@@ -2,133 +2,117 @@ package com.techidea.weiboapp.adapter;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.techidea.weiboapp.entity.BrowserPic;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
+import com.techidea.weiboapp.R;
 import com.techidea.weiboapp.entity.PicUrls;
 import com.techidea.weiboapp.util.DisplayUtils;
-
 
 import java.util.ArrayList;
 
 /**
- * Created by zhangchao on 2015/8/25.
+ * Created by zhangchao on 2015/9/13.
  */
-public class ImageBrowserAdapter extends PagerAdapter{
+public class ImageBrowserAdapter extends PagerAdapter {
 
     private Activity context;
-    private ArrayList<BrowserPic> pics;
+    private ArrayList<PicUrls> picUrls;
+    private ArrayList<View> picViews;
+
     private ImageLoader mImageLoader;
 
-    public ImageBrowserAdapter(Activity context, ArrayList<PicUrls> pics) {
+    public ImageBrowserAdapter(Activity context, ArrayList<PicUrls> picUrls) {
         this.context = context;
+        this.picUrls = picUrls;
         this.mImageLoader = ImageLoader.getInstance();
-        initImgs(pics);
+        initImgs();
     }
 
-    private void initImgs(ArrayList<PicUrls> picUrls){
-        pics = new ArrayList<BrowserPic>();
-        BrowserPic browserPic;
-        for (PicUrls picUrl : picUrls){
-//            browserPic = new BrowserPic();
-//            browserPic.setPic(picUrl);
-//            Bitmap oBm = mImageLoader.getMemoryCache().get(picUrl.getOriginal_pic());
-//            File disCache = mImageLoader.getDiskCache().get(picUrl.getOriginal_pic());
-//            if(oBm != null || disCache != null){
-//                browserPic.setIsOriginalPic(true);
-//                oBm.recycle();
-//            }
-//            pics.add(browserPic);
+    private void initImgs(){
+        picViews = new ArrayList<View>();
+
+        for(int i=0;i<picUrls.size();i++){
+            //填充显示图片的页面布局
+            View view = View.inflate(context,R.layout.item_image_browser,null);
+            picViews.add(view);
         }
-    }
-
-    public BrowserPic getPic(int position){
-        return pics.get(position);
-    }
-
-    @Override
-    public View instantiateItem(ViewGroup container, int position) {
-        ScrollView sv = new ScrollView(context);
-        FrameLayout.LayoutParams svParams = new FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.MATCH_PARENT
-        );
-        sv.setLayoutParams(svParams);
-
-        LinearLayout ll = new LinearLayout(context);
-        LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-
-        ll.setLayoutParams(llParams);
-        sv.addView(ll);
-
-        final int screenHeight = DisplayUtils.getScreenHeightPixels(context);
-        final int screenWidth = DisplayUtils.getScreenWidthPixels(context);
-
-        final ImageView iv = new ImageView(context);
-
-        final BrowserPic browserPic = pics.get(position % pics.size());
-        PicUrls picUrls = browserPic.getPic();
-
-        String url = browserPic.isOriginalPic() ? picUrls.getOriginal_pic() : picUrls.getBmiddle_pic();
-
-//        mImageLoader.loadImage(url, new ImageLoadingListener() {
-//            @Override
-//            public void onLoadingStarted(String s, View view) {
-//
-//            }
-//
-//            @Override
-//            public void onLoadingFailed(String s, View view, FailReason failReason) {
-//
-//            }
-//
-//            @Override
-//            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-//                browserPic.setBitmap(bitmap);
-//
-//                float scale = (float)bitmap.getHeight()/bitmap.getWidth();
-//                int height = Math.max((int) (screenWidth * scale),screenHeight);
-//                LinearLayout.LayoutParams params = new LinearLayout
-//                        .LayoutParams(screenWidth,height);
-//                iv.setLayoutParams(params);
-//                iv.setImageBitmap(bitmap);
-//            }
-//
-//            @Override
-//            public void onLoadingCancelled(String s, View view) {
-//
-//            }
-//        });
-        iv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                context.finish();
-            }
-        });
-        container.addView(sv, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        return sv;
     }
 
     @Override
     public int getCount() {
-        if(pics.size() > 1){
-            return  Integer.MAX_VALUE;
+        if(picUrls.size() > 1) {
+            return Integer.MAX_VALUE;
         }
-        return pics.size();
+        return picUrls.size();
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object o) {
-        return view == o;
+    public boolean isViewFromObject(View view, Object object) {
+        return view == object;
+    }
+
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        int index = position % picUrls.size();
+        View view = picViews.get(index);
+        final ImageView iv_image_browser = (ImageView)view.findViewById(R.id.iv_image_browser);
+        PicUrls picUrl = picUrls.get(index);
+
+        String url = picUrl.isShowOriImag()?picUrl.getOriginal_pic():picUrl.getBmiddle_pic();
+        mImageLoader.loadImage(url, new ImageLoadingListener() {
+            @Override
+            public void onLoadingStarted(String imageUri, View view) {
+
+            }
+
+            @Override
+            public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+
+            }
+
+            @Override
+            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                float scale = (float) loadedImage.getHeight() / loadedImage.getWidth();
+
+                int screenWidthPixels = DisplayUtils.getScreenWidthPixels(context);
+                int screenHeightPixels = DisplayUtils.getScreenHeightPixels(context);
+                int height = (int) (screenWidthPixels * scale);
+
+                if (height < screenHeightPixels) {
+                    height = screenHeightPixels;
+                }
+
+                ViewGroup.LayoutParams params = iv_image_browser.getLayoutParams();
+                params.height = height;
+                params.width = screenWidthPixels;
+
+                iv_image_browser.setImageBitmap(loadedImage);
+
+            }
+
+            @Override
+            public void onLoadingCancelled(String imageUri, View view) {
+
+            }
+        });
+        container.addView(view);
+        return  view;
+
+//        return super.instantiateItem(container, position);
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        container.removeView((View)object);
     }
 
     @Override
@@ -136,9 +120,21 @@ public class ImageBrowserAdapter extends PagerAdapter{
         return POSITION_NONE;
     }
 
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-//        super.destroyItem(container, position, object);
-        container.removeView((View)object);
+    public PicUrls getPic(int position){
+        return picUrls.get(position%picUrls.size());
     }
+
+    public Bitmap getBitmap(int position){
+        Bitmap bitmap = null;
+        View view = picViews.get(position%picViews.size());
+        ImageView iv_image_browser = (ImageView)view.findViewById(R.id.iv_image_browser);
+        Drawable drawable = iv_image_browser.getDrawable();
+        if(drawable != null && drawable instanceof BitmapDrawable){
+            BitmapDrawable bd = (BitmapDrawable)drawable;
+            bitmap = bd.getBitmap();
+        }
+        return bitmap;
+    }
+
+
 }

@@ -2,6 +2,7 @@ package com.techidea.weiboapp.activity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.techidea.weiboapp.BaseActivity;
 import com.techidea.weiboapp.R;
 import com.techidea.weiboapp.adapter.ImageBrowserAdapter;
+import com.techidea.weiboapp.adapter.ImageBrowserAdapter1;
 import com.techidea.weiboapp.entity.BrowserPic;
 import com.techidea.weiboapp.entity.PicUrls;
 import com.techidea.weiboapp.entity.Status;
@@ -45,17 +47,19 @@ public class ImageBrowserActivity extends BaseActivity implements View.OnClickLi
 
     private void initData(){
         status = (Status) getIntent().getSerializableExtra("status");
-        position = getIntent().getIntExtra("position",-1);
-        if(position == -1){
-            imgUrls = new ArrayList<PicUrls>();
-            PicUrls url = new PicUrls();
-            url.setThumbnail_pic(status.getThumbnail_pic());
-            url.setOriginal_pic(status.getOriginal_pic());
-            imgUrls.add(url);
-            position = 0;
-        }else{
-            imgUrls = status.getPic_urls();
-        }
+        position = getIntent().getIntExtra("position",0);
+        //获取图片数据集合（单图也有对应的集合，集合的size为1）
+        imgUrls = status.getPic_urls();
+//        if(position == -1){
+//            imgUrls = new ArrayList<PicUrls>();
+//            PicUrls url = new PicUrls();
+//            url.setThumbnail_pic(status.getThumbnail_pic());
+//            url.setOriginal_pic(status.getOriginal_pic());
+//            imgUrls.add(url);
+//            position = 0;
+//        }else{
+//            imgUrls = status.getPic_urls();
+//        }
     }
 
     private void initView(){
@@ -69,14 +73,26 @@ public class ImageBrowserActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void setData(){
-        tv_image_index.setVisibility(imgUrls.size() > 1 ? View.VISIBLE: View.GONE);
-
         adapter = new ImageBrowserAdapter(this,imgUrls);
         vp_image_browser.setAdapter(adapter);
 
-        final int size = status.getPic_urls().size();
-        tv_image_index.setText((position%size + 1)+ "/" + status.getPic_urls().size());
-        vp_image_browser.setCurrentItem(Integer.MAX_VALUE / size / 2 * size + position);
+        final int size = imgUrls.size();
+        int initPosition = Integer.MAX_VALUE/2/size*size + position;
+
+        if(size>1){
+            tv_image_index.setVisibility(View.VISIBLE);
+            tv_image_index.setText((position+1) + "" + size);
+        }else{
+            tv_image_index.setVisibility(View.GONE);
+        }
+
+
+
+//        tv_image_index.setVisibility(imgUrls.size() > 1 ? View.VISIBLE : View.GONE);
+//
+//
+//        tv_image_index.setText((position%size + 1)+ "/" + status.getPic_urls().size());
+//        vp_image_browser.setCurrentItem(Integer.MAX_VALUE / size / 2 * size + position);
         vp_image_browser.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
@@ -85,9 +101,15 @@ public class ImageBrowserActivity extends BaseActivity implements View.OnClickLi
 
             @Override
             public void onPageSelected(int i) {
-                tv_image_index.setText((i % size + 1)+ "/" + status.getPic_urls().size());
-                BrowserPic pic = adapter.getPic(i%size);
-                btn_original_image.setVisibility(pic.isOriginalPic() ? View.VISIBLE : View.GONE);
+                int index = i % size;
+                tv_image_index.setText((index + 1) + "/" + size);
+
+                PicUrls pic = adapter.getPic(i);
+                btn_original_image.setVisibility(pic.isShowOriImag()?
+                View.GONE:View.VISIBLE);
+//                tv_image_index.setText((i % size + 1)+ "/" + status.getPic_urls().size());
+//                BrowserPic pic = adapter.getPic(i%size);
+//                btn_original_image.setVisibility(pic.isOriginalPic() ? View.VISIBLE : View.GONE);
 
             }
 
@@ -96,35 +118,53 @@ public class ImageBrowserActivity extends BaseActivity implements View.OnClickLi
 
             }
         });
+        vp_image_browser.setCurrentItem(initPosition);
     }
 
     @Override
     public void onClick(View view) {
-        BrowserPic pic = adapter.getPic(vp_image_browser.getCurrentItem() % status.getPic_urls().size());
+        PicUrls picUrl = adapter.getPic(vp_image_browser.getCurrentItem());
         switch (view.getId()){
             case R.id.btn_original_image:
-                pic.setIsOriginalPic(true);
+                picUrl.setShowOriImag(true);
                 adapter.notifyDataSetChanged();
                 btn_original_image.setVisibility(View.GONE);
                 break;
             case R.id.btn_save:
-                Bitmap bitmap = pic.getBitmap();
-                PicUrls picUrl = pic.getPic();
-                String oriUrl = picUrl.getOriginal_pic();
-                String midUrl = picUrl.getBmiddle_pic();
-                String fileName = "img-" + (pic.isOriginalPic()?
-                    "ori-" + oriUrl.substring(oriUrl.lastIndexOf("/") + 1)
-                : "mid-" + midUrl.substring(midUrl.lastIndexOf("/") + 1));
+                Bitmap bitmap = adapter.getBitmap(vp_image_browser.getCurrentItem());
 
-                if(bitmap != null){
-                    try{
-                        ImageUtils.saveFile(this,bitmap,fileName);
-                        showToast("图片保存成功");
-                    }catch (IOException e){
-                        e.printStackTrace();
-                        showToast("图片保存失败");
-                    }
+                boolean showOriImag = picUrl.isShowOriImag();
+                String fileName = "img-" + (showOriImag?"ori-":"mid-") + picUrl.getImageId();
+                String title = fileName.substring(0,fileName.lastIndexOf("."));
+                String insertImage = MediaStore.Images.Media.insertImage(
+                        getContentResolver(),bitmap,title,"BoreWBImage"
+                );
+                if(insertImage == null){
+                    showToast("图片保存失败");
+                }else{
+                showToast("图片保存成功");
                 }
+
+
+
+
+//                Bitmap bitmap = pic.getBitmap();
+//                PicUrls picUrl = pic.getPic();
+//                String oriUrl = picUrl.getOriginal_pic();
+//                String midUrl = picUrl.getBmiddle_pic();
+//                String fileName = "img-" + (pic.isOriginalPic()?
+//                    "ori-" + oriUrl.substring(oriUrl.lastIndexOf("/") + 1)
+//                : "mid-" + midUrl.substring(midUrl.lastIndexOf("/") + 1));
+//
+//                if(bitmap != null){
+//                    try{
+//                        ImageUtils.saveFile(this,bitmap,fileName);
+//                        showToast("图片保存成功");
+//                    }catch (IOException e){
+//                        e.printStackTrace();
+//                        showToast("图片保存失败");
+//                    }
+//                }
                 break;
         }
     }

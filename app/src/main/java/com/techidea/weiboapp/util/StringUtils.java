@@ -1,6 +1,7 @@
 package com.techidea.weiboapp.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.Spannable;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.techidea.weiboapp.R;
+import com.techidea.weiboapp.activity.UserInfoActivity;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -53,7 +55,10 @@ public class StringUtils {
                 BoreClickableSpan clickableSpan = new BoreClickableSpan(context) {
                     @Override
                     public void onClick(View widget) {
-                        ToastUtils.showToast(context, "用户: " + atStr, Toast.LENGTH_SHORT);
+                        Intent intent = new Intent(context, UserInfoActivity.class);
+                        intent.putExtra("userName", atStr.substring(1));
+                        context.startActivity(intent);
+//                        ToastUtils.showToast(context, "用户: " + atStr, Toast.LENGTH_SHORT);
 //                        super.onClick(widget);
                     }
                 };

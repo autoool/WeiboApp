@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.techidea.weiboapp.activity.MainActivity;
 import com.techidea.weiboapp.api.BoreWeiboApi;
 import com.techidea.weiboapp.constants.CommonConstants;
 import com.techidea.weiboapp.util.DialogUtils;
@@ -32,6 +33,8 @@ public class BaseActivity extends Activity {
     protected ImageLoader imageLoader;
     protected BoreWeiboApi weiboApi;
     protected Gson gson;
+
+    private MainActivity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

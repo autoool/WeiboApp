@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -18,15 +19,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.techidea.weiboapp.BaseActivity;
 import com.techidea.weiboapp.R;
 import com.techidea.weiboapp.adapter.StatusCommentAdapter;
 import com.techidea.weiboapp.adapter.StatusGridImgsAdapter;
-import com.techidea.weiboapp.api.BoreWeiboApi;
 import com.techidea.weiboapp.api.SimpleRequestListener;
 import com.techidea.weiboapp.entity.Comment;
 import com.techidea.weiboapp.entity.PicUrls;
@@ -38,8 +36,6 @@ import com.techidea.weiboapp.util.ImageOptHelper;
 import com.techidea.weiboapp.util.StringUtils;
 import com.techidea.weiboapp.util.TitleBuilder;
 import com.techidea.weiboapp.widget.WrapHeightGridView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -274,6 +270,7 @@ public class StatusDetailActivity extends BaseActivity implements
                 " 来自" + Html.fromHtml(status.getSource()));
         setImages(status,include_status_image,gv_images,iv_image);
 
+
         if(TextUtils.isEmpty(status.getText())){
             tv_content.setVisibility(View.GONE);
         }else{
@@ -332,13 +329,30 @@ public class StatusDetailActivity extends BaseActivity implements
             vgContainer.setVisibility(View.VISIBLE);
             gv_images.setVisibility(View.GONE);
             ivImg.setVisibility(View.VISIBLE);
-            imageLoader.displayImage(picUrl,ivImg);
+            imageLoader.displayImage(picUrl, ivImg);
+            ivImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(StatusDetailActivity.this,ImageBrowserActivity.class);
+                    intent.putExtra("status",status);
+                    startActivity(intent);
+                }
+            });
         }else if (picUrls!=null && picUrls.size() > 1){
             vgContainer.setVisibility(View.VISIBLE);
             gv_images.setVisibility(View.VISIBLE);
             ivImg.setVisibility(View.GONE);
             StatusGridImgsAdapter imageAdapter  = new StatusGridImgsAdapter(this,picUrls);
             gvImgs.setAdapter(imageAdapter);
+            gvImgs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent = new Intent(StatusDetailActivity.this,ImageBrowserActivity.class);
+                    intent.putExtra("status",status);
+                    intent.putExtra("position",i);
+                    startActivity(intent);
+                }
+            });
         }else{
             vgContainer.setVisibility(View.GONE);
         }

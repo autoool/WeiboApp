@@ -20,11 +20,13 @@ import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.techidea.weiboapp.BaseActivity;
 import com.techidea.weiboapp.R;
 import com.techidea.weiboapp.adapter.StatusAdapter;
 import com.techidea.weiboapp.api.BoreWeiboApi;
 import com.techidea.weiboapp.api.SimpleRequestListener;
+import com.techidea.weiboapp.constants.AccessTokenKeeper;
 import com.techidea.weiboapp.entity.Status;
 import com.techidea.weiboapp.entity.User;
 import com.techidea.weiboapp.entity.response.StatusTimeLineResponse;
@@ -80,8 +82,11 @@ public class UserInfoActivity extends BaseActivity implements
     private int minImageHeight = -1;
     private int maxImageHeight = -1;
 
+    private Oauth2AccessToken mAccessToken;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
         userName = intent.getStringExtra("userName");
@@ -89,11 +94,13 @@ public class UserInfoActivity extends BaseActivity implements
             isCurrentUser = true;
             user = application.currentUser;
         }
+
         initView();
         loadData();
     }
 
     private void initView(){
+
         title = new TitleBuilder(this)
                 .setTitleBgRes(R.drawable.userinfo_navigationbar_background)
                 .setLeftImage(R.drawable.navigationbar_back_sel)
@@ -213,6 +220,8 @@ public class UserInfoActivity extends BaseActivity implements
                         user_info_head.getTop(),
                         iv_user_info_head.getWidth(),
                         user_info_head.getTop() + iv_user_info_head.getHeight());
+//                shadow_user_info_tab.setVisibility(i >= 2 ?
+//                        View.VISIBLE : View.GONE);
                 if (user_info_head.getBottom() < title.getBottom()) {
                     shadow_user_info_tab.setVisibility(View.VISIBLE);
                     title.setBackgroundResource(R.drawable.navigationbar_background);
@@ -230,7 +239,9 @@ public class UserInfoActivity extends BaseActivity implements
     }
 
     private void initLoadingLayout(ILoadingLayout loadingLayout){
-        loadingLayout.setLoadingDrawable(new ColorDrawable(getResources().getColor(R.color.transparent)));
+
+        loadingLayout.setLoadingDrawable(
+                new ColorDrawable(getResources().getColor(R.color.transparent)));
         loadingLayout.setPullLabel("");
         loadingLayout.setReleaseLabel("");
         loadingLayout.setRefreshingLabel("");
@@ -306,17 +317,19 @@ public class UserInfoActivity extends BaseActivity implements
     }
 
     private void addStatus(StatusTimeLineResponse response){
-        for (Status status : response.getStatuses()){
-            if(!statuses.contains(status)){
-                statuses.add(status);
+        if(response.getStatuses() != null){
+            for (Status status : response.getStatuses()){
+                if(!statuses.contains(status)){
+                    statuses.add(status);
+                }
             }
+            statusAdapter.notifyDataSetChanged();
         }
-        statusAdapter.notifyDataSetChanged();
 
         if(curPage < response.getTotal_number()){
             addFootView(plv_user_info,footView);
         }else{
-            removeFootView(plv_user_info,footView);
+            removeFootView(plv_user_info, footView);
         }
     }
 

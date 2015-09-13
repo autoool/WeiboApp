@@ -31,11 +31,8 @@ ADDED from AndroidManifest.xml:8:5
 		ADDED from AndroidManifest.xml:8:22
 application
 ADDED from AndroidManifest.xml:10:5
-MERGED from com.android.support:appcompat-v7:22.2.1:22:5
-MERGED from com.android.support:support-v4:22.2.1:22:5
-MERGED from com.android.support:support-v4:22.2.1:22:5
+MERGED from com.android.support:appcompat-v7:19.1.0:19:5
 MERGED from WeiBoApp:pulltorefresh:unspecified:11:5
-MERGED from com.android.support:support-v4:22.2.1:22:5
 	android:label
 		ADDED from AndroidManifest.xml:14:9
 	android:allowBackup
@@ -67,26 +64,55 @@ ADDED from AndroidManifest.xml:26:9
 	android:name
 		ADDED from AndroidManifest.xml:26:19
 activity#com.techidea.weiboapp.activity.LoginActivity
+ADDED from AndroidManifest.xml:27:9
+	android:name
+		ADDED from AndroidManifest.xml:27:19
+activity#com.techidea.weiboapp.activity.WriteCommentActivity
 ADDED from AndroidManifest.xml:28:9
 	android:name
 		ADDED from AndroidManifest.xml:28:19
-activity#com.techidea.weiboapp.activity.WriteCommentActivity
+activity#com.techidea.weiboapp.activity.StatusDetailActivity
+ADDED from AndroidManifest.xml:29:9
+	android:name
+		ADDED from AndroidManifest.xml:29:19
+activity#com.techidea.weiboapp.activity.WriteStatusActivity
 ADDED from AndroidManifest.xml:30:9
 	android:name
 		ADDED from AndroidManifest.xml:30:19
-activity#com.techidea.weiboapp.activity.StatusDetailActivity
+activity#com.techidea.weiboapp.activity.UserInfoActivity
+ADDED from AndroidManifest.xml:31:9
+	android:name
+		ADDED from AndroidManifest.xml:31:19
+activity#com.techidea.weiboapp.activity.ImageBrowserActivity
 ADDED from AndroidManifest.xml:32:9
 	android:name
 		ADDED from AndroidManifest.xml:32:19
+activity#com.techidea.weiboapp.activity.imgfilter.ImageFilterActivity
+ADDED from AndroidManifest.xml:33:9
+	android:name
+		ADDED from AndroidManifest.xml:33:19
+activity#com.techidea.weiboapp.activity.imgfilter.ImageFilterCropActivity
+ADDED from AndroidManifest.xml:34:9
+	android:name
+		ADDED from AndroidManifest.xml:34:19
+activity#com.techidea.weiboapp.activity.imgfilter.ImageFilterEffectActivity
+ADDED from AndroidManifest.xml:35:9
+	android:name
+		ADDED from AndroidManifest.xml:35:19
+activity#com.techidea.weiboapp.activity.imgfilter.ImageFilterFaceActivity
+ADDED from AndroidManifest.xml:36:9
+	android:name
+		ADDED from AndroidManifest.xml:36:19
+activity#com.techidea.weiboapp.activity.imgfilter.ImageFilterFrameActivity
+ADDED from AndroidManifest.xml:37:9
+	android:name
+		ADDED from AndroidManifest.xml:37:19
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
-MERGED from com.android.support:appcompat-v7:22.2.1:20:5
-MERGED from com.android.support:support-v4:22.2.1:20:5
+MERGED from com.android.support:appcompat-v7:19.1.0:18:5
 MERGED from WeiBoApp:uil:unspecified:7:5
-MERGED from WeiBoApp:weiboSDK:unspecified:7:5
-MERGED from com.android.support:support-v4:22.2.1:20:5
 MERGED from WeiBoApp:pulltorefresh:unspecified:7:5
-MERGED from com.android.support:support-v4:22.2.1:20:5
+MERGED from WeiBoApp:weiboSDK:unspecified:7:5
 	android:targetSdkVersion
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
