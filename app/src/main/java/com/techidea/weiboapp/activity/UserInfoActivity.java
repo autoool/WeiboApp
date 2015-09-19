@@ -102,9 +102,11 @@ public class UserInfoActivity extends BaseActivity implements
     private void initView(){
 
         title = new TitleBuilder(this)
-                .setTitleBgRes(R.drawable.userinfo_navigationbar_background)
-                .setLeftImage(R.drawable.navigationbar_back_sel)
+                .setTitleBackground(R.color.white)
+//                .setTitleBgRes(R.drawable.userinfo_navigationbar_background)
+//                .setLeftImage(R.drawable.navigationbar_back_sel)
                 .setLeftOnClickListener(this)
+                .setTitleText("自己")
                 .build();
 
         titlebar_iv_left = (ImageView)title.findViewById(R.id.titlebar_iv_left);
@@ -220,19 +222,28 @@ public class UserInfoActivity extends BaseActivity implements
                         user_info_head.getTop(),
                         iv_user_info_head.getWidth(),
                         user_info_head.getTop() + iv_user_info_head.getHeight());
-//                shadow_user_info_tab.setVisibility(i >= 2 ?
-//                        View.VISIBLE : View.GONE);
-                if (user_info_head.getBottom() < title.getBottom()) {
-                    shadow_user_info_tab.setVisibility(View.VISIBLE);
-                    title.setBackgroundResource(R.drawable.navigationbar_background);
-                    titlebar_iv_left.setImageResource(R.drawable.navigationbar_back_sel);
+
+                if(user_info_head.getBottom() < title.getBottom()){
                     titlebar_tv.setVisibility(View.VISIBLE);
-                } else {
+                }else{
                     shadow_user_info_tab.setVisibility(View.GONE);
-                    title.setBackgroundResource(R.drawable.userinfo_navigationbar_background);
-                    titlebar_iv_left.setImageResource(R.drawable.userinfo_navigationbar_back_sel);
-                    titlebar_tv.setVisibility(View.GONE);
                 }
+//                if(i>=2){
+//                    shadow_user_info_tab.setVisibility(View.VISIBLE);
+//                }else{
+//                    shadow_user_info_tab.setVisibility(View.GONE);
+//                }
+
+//                if (user_info_head.getBottom() < title.getBottom()) {
+//                    title.setBackgroundResource(R.drawable.navigationbar_background);
+//                    titlebar_iv_left.setImageResource(R.drawable.navigationbar_back_sel);
+//                    titlebar_tv.setVisibility(View.VISIBLE);
+//                } else {
+//                    shadow_user_info_tab.setVisibility(View.GONE);
+//                    title.setBackgroundResource(R.drawable.userinfo_navigationbar_background);
+//                    titlebar_iv_left.setImageResource(R.drawable.userinfo_navigationbar_back_sel);
+//                    titlebar_tv.setVisibility(View.GONE);
+//                }
 
             }
         });

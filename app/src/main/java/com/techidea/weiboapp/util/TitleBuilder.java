@@ -45,6 +45,11 @@ public class TitleBuilder {
         return this;
     }
 
+    public TitleBuilder setTitleBackground(int color){
+        viewTitle.setBackgroundColor(color);
+        return this;
+    }
+
     public TitleBuilder setTitleText(String text){
         viewTitle.setBackgroundResource(TextUtils.isEmpty(text)? View.GONE: View.VISIBLE);
         tvTitle.setText(text);

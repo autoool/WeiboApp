@@ -16,7 +16,6 @@
             style="@style/ListViewLineDivider">
             </com.techidea.weiboapp.widget.Pull2RefreshListView>
 
-
         <include
             android:id="@+id/status_detail_tab"
             layout="@layout/status_detail_tab"
