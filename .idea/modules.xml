@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WeiBoApp.iml" filepath="$PROJECT_DIR$/WeiBoApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeiboApp.iml" filepath="$PROJECT_DIR$/WeiboApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/pulltorefresh/pulltorefresh.iml" filepath="$PROJECT_DIR$/pulltorefresh/pulltorefresh.iml" />
       <module fileurl="file://$PROJECT_DIR$/uil/uil.iml" filepath="$PROJECT_DIR$/uil/uil.iml" />

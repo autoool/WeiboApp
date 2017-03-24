@@ -15,4 +15,4 @@
         android:topLeftRadius="@dimen/indicator_corner_radius"
         android:topRightRadius="@dimen/indicator_corner_radius" />
 
-</shape><!-- From: file:/F:/AndroidStudioProjects/WeiBoApp/pulltorefresh/src/main/res/drawable/indicator_bg_bottom.xml -->
+</shape><!-- From: file:/E:/MyGithub/WeiboApp/pulltorefresh/src/main/res/drawable/indicator_bg_bottom.xml -->
